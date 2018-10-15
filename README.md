@@ -1,7 +1,7 @@
 # Database Project Team 2
 
 ## Up and running:
-First things first, you'll needs Ruby and Rails installed to run the project. If you're on Windows or Mac, RailsInstaller will sort everything out for you. If you're on Linux, prayer is probably your best bet. Once you've done that, and pulled the project, cd into the root folder and:
+First things first, you'll needs Ruby and Rails installed to run the project. If you're on Windows or Mac, RailsInstaller will sort everything out for you. If you're on Linux, prayer is probably your best bet. Once you've done that, and forked the project, cd into the root folder and:
 
     bundle install
     rails server
