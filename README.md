@@ -1,24 +1,17 @@
-# README
+# Database Project Team 2
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Up and running:
+First things first, you'll needs Ruby and Rails installed to run the project. If you're on Windows or Mac, RailsInstaller will sort everything out for you. If you're on Linux, prayer is probably your best bet. Once you've done that, and pulled the project, cd into the root folder and:
 
-Things you may want to cover:
+    bundle install
+    rails server
 
-* Ruby version
+The first ensures you have all the necessary Ruby gems installed, the second starts the server. Oh, and you might also have to run:
 
-* System dependencies
+    rails db:migrate
 
-* Configuration
+That updates your DB schema.
 
-* Database creation
+The website should then be up and running at localhost:3000. The index page isn't there yet, but if you go to locahost:3000/students, or locahost:3000/packages, you can see the entities I've made and create/edit/delete them. Let me know if you have questions.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+-- Jack
