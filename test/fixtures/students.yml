@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bannerID: MyString
+  fname: MyString
+  lname: MyString
+  pname: MyString
+  email: MyString
+
+two:
+  bannerID: MyString
+  fname: MyString
+  lname: MyString
+  pname: MyString
+  email: MyString

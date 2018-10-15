@@ -1,0 +1,27 @@
+<%= form_with(model: spare_key, local: true) do |form| %>
+  <% if spare_key.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spare_key.errors.count, "error") %> prohibited this spare_key from being saved:</h2>
+
+      <ul>
+      <% spare_key.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :barcode %>
+    <%= form.text_field :barcode, id: :spare_key_barcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :keycode %>
+    <%= form.text_field :keycode, id: :spare_key_keycode %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

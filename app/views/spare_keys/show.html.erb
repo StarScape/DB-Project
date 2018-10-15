@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @spare_key.barcode %>
+</p>
+
+<p>
+  <strong>Keycode:</strong>
+  <%= @spare_key.keycode %>
+</p>
+
+<%= link_to 'Edit', edit_spare_key_path(@spare_key) %> |
+<%= link_to 'Back', spare_keys_path %>

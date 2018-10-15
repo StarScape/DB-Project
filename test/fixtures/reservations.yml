@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2018-10-14 15:08:30
+  end_date: 2018-10-14 15:08:30
+  recurring: false
+  room_id: 1
+
+two:
+  start_date: 2018-10-14 15:08:30
+  end_date: 2018-10-14 15:08:30
+  recurring: false
+  room_id: 1

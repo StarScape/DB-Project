@@ -1,0 +1,2 @@
+class SpareKey < ApplicationRecord
+end

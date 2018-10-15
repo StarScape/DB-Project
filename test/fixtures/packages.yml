@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  received: false
+  perishable: false
+  first_email: 2018-10-14 15:04:21
+  second_email: 2018-10-14 15:04:21
+
+two:
+  received: false
+  perishable: false
+  first_email: 2018-10-14 15:04:21
+  second_email: 2018-10-14 15:04:21
