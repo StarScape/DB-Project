@@ -5,3 +5,40 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+DA.create(email: 'foo@appstate.edu', password: 'password', name: 'Foo E. Bar')
+
+Student.create({
+    bannerID: '9001',
+    fname: 'Jack',
+    lname: 'Arrington',
+    email: "jack@appstate.edu"
+})
+
+Student.create({
+  bannerID: '9002',
+  fname: 'Adam',
+  lname: 'Harrison',
+  email: "adam@appstate.edu"
+})
+
+Student.create({
+  bannerID: '9003',
+  fname: 'Emily',
+  lname: 'Eckerson',
+  email: "emily@appstate.edu"
+})
+
+Student.create({
+  bannerID: '9004',
+  fname: 'Mary',
+  lname: 'Smith',
+  email: "mary@appstate.edu"
+})
+
+Student.create({
+  bannerID: '9005',
+  fname: 'Jim',
+  lname: 'Jones',
+  email: "jim@appstate.edu"
+})

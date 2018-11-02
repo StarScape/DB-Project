@@ -4,3 +4,11 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+task :regen_db do
+  print `rm db/development.sqlite3`
+  print `rm db/test.sqlite3`
+  print `rails db:setup`
+  print `rails db:migrate`
+  print `rails db:seed`
+end
