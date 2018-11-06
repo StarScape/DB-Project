@@ -1,0 +1,30 @@
+<template id='student-search-template'>
+  <div>
+    <h3>Search for a student</h3>
+    <input type="text" name="student_name" placeholder='Student name' v-model='search'>
+    <input type="submit" value="Search" v-on:click='submitSearch'>
+
+    <table class='table'>
+      <tr v-if='students.length > 0'>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Banner ID</th>
+      </tr>
+      <tr v-for="student in students"
+          v-bind:class="{ 'student-tr': true, 'table-active': student==selectedStudent }"
+          @click='selectedStudent=student'>
+        <td>{{ student.fname }}</td>
+        <td>{{ student.lname }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.bannerID }}</td>
+      </tr>
+    </table>
+  </div>
+</template>
+
+<style type="text/css">
+  .student-tr {
+    cursor: pointer;
+  }
+</style>

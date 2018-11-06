@@ -6,15 +6,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Vue templates -->
+    <%= render :partial => './vue/student_search.vue.erb' %>
   </head>
 
   <body>
-     <div class="flash-container">
-      <% flash.each do |message_type, message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
+    <div id='vue-app'>
+      
+      <div class="flash-container">
+        <% flash.each do |message_type, message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

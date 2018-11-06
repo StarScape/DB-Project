@@ -61,6 +61,22 @@ class StudentsController < ApplicationController
     end
   end
 
+  def search
+    msg = []
+    students = Student.search params[:search]
+    students.each do |s|
+      msg.push({
+        :fname => s.fname,
+        :lname => s.lname,
+        :bannerID => s.bannerID,
+        :email => s.email,
+        :id => s.id
+      })
+    end
+
+    render :json => msg
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
