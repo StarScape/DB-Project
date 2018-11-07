@@ -12,7 +12,7 @@ Student.create({
     bannerID: '9001',
     fname: 'Jack',
     lname: 'Arrington',
-    email: "jack@appstate.edu"
+    email: "arringtonja1@appstate.edu"
 })
 
 Student.create({
