@@ -1,6 +1,4 @@
 class PackagesController < ApplicationController
-  before_action :set_package, only: [:show, :edit, :update, :destroy]
-
   # GET /packages
   # GET /packages.json
   def index
@@ -14,11 +12,18 @@ class PackagesController < ApplicationController
 
   # GET /packages/new
   def new
-    @package = Package.new
   end
 
   # GET /packages/1/edit
   def edit
+  end
+
+  # Finds the package(s) associated with a BannerID
+  def find
+    student = Student.find_by(bannerID: params[:bannerID])
+    packages = Package.where(student_id: student.id, received: false).all
+
+    render json: { student: student, packages: packages.to_a }
   end
 
   # POST /packages
@@ -41,17 +46,14 @@ class PackagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /packages/1
-  # PATCH/PUT /packages/1.json
   def update
-    respond_to do |format|
-      if @package.update(package_params)
-        format.html { redirect_to @package, notice: 'Package was successfully updated.' }
-        format.json { render :show, status: :ok, location: @package }
-      else
-        format.html { render :edit }
-        format.json { render json: @package.errors, status: :unprocessable_entity }
-      end
+    package = Package.find params[:package_id]
+    Package.update params[:package_id], :received => true
+
+    if package.save
+      render json: { success: true }
+    else
+      render json: { success: false }
     end
   end
 

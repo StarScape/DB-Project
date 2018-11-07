@@ -15,3 +15,6 @@ That updates your DB schema.
 The website should then be up and running at localhost:3000. The index page isn't there yet, but if you go to locahost:3000/students, or locahost:3000/packages, you can see the entities I've made and create/edit/delete them. Let me know if you have questions.
 
 -- Jack
+
+TODO:
+* rename package files/routes/actions to be consistent

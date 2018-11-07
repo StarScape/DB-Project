@@ -1,6 +1,20 @@
-<h1>Editing Package</h1>
+<h1>Check out package</h1>
+<input type="text" name="bannerID" placeholder='Enter BannerID' v-model='bannerID'>
+<input type="submit" value="Search" class='btn btn-primary' v-on:click='findStudent'>
 
-<%= render 'form', package: @package %>
+<div>
+  <table class='table'>
+    <h4 v-if='student != null'>There are {{ packages.length }} packages available for {{ student.pname }}</h4>
+    <tr v-if='packages.length > 0'>
+      <th>For</th>
+      <th>Package ID</th>
+    </tr>
+    <tr v-for="package in packages">
+      <td>{{ student.pname }}</td>
+      <td>{{ package.id }}</td>
+      <td><button class='btn btn-primary' @click='checkoutPackage(package)'>Checkout Package</button></td>
+    </tr>
+  </table>
+</div>
 
-<%= link_to 'Show', @package %> |
-<%= link_to 'Back', packages_path %>
+<%= javascript_include_tag 'package_checkout' %>

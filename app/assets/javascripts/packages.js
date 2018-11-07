@@ -13,7 +13,7 @@ var vm = new Vue({
     registerPackage: function() {
       this.statusMessage = "Waiting for server...";
 
-      $.post('/packages', {
+      $.post('/packages/new', {
         "perishable": this.perishable == 'true',
         "student_id": this.selectedStudent.id
       }, (data) => {
