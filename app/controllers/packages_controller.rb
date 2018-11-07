@@ -24,16 +24,20 @@ class PackagesController < ApplicationController
   # POST /packages
   # POST /packages.json
   def create
-    @package = Package.new(package_params)
+    @package = Package.new({
+      student_id: params[:student_id],
+      received: false,
+      perishable: params[:perishable],
+      first_email: Time.now
+    })
 
-    respond_to do |format|
-      if @package.save
-        format.html { redirect_to @package, notice: 'Package was successfully created.' }
-        format.json { render :show, status: :created, location: @package }
-      else
-        format.html { render :new }
-        format.json { render json: @package.errors, status: :unprocessable_entity }
-      end
+    # TODO:
+    # SEND EMAIL HERE
+
+    if @package.save
+      render json: { msg: "Package created successfully" }
+    else
+      render json: { msg: "Oh no! There was an error" }
     end
   end
 
@@ -69,6 +73,6 @@ class PackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
-      params.require(:package).permit(:received, :perishable, :first_email, :second_email)
+      params.require(:package).permit(:perishable, :student_id, :first_email, :second_email)
     end
 end

@@ -15,3 +15,4 @@
 //= require rails-ujs
 //= require turbolinks
 //= require vue.min
+//= require student_search

@@ -1,24 +1,24 @@
-Vue.component('student-search', {
-  template: '#student-search-template',
-  data: function () {
-    return {
-      search: "",
-      students: [],
-      selectedStudent: null
-    }
+var vm = new Vue({
+  el: "#vue-app",
+  data: {
+    selectedStudent: null,
+    perishable: null,
+    statusMessage: "",
   },
   methods: {
-    submitSearch: function() {
-      $.get('../students/search', { search: this.search }, (data) => {
-        this.students = data;
-      });
+    studentSelected: function(student) {
+      this.selectedStudent = student;
     },
-    foobar: function() {
-      console.log(this.selectedStudent);
+
+    registerPackage: function() {
+      this.statusMessage = "Waiting for server...";
+
+      $.post('/packages', {
+        "perishable": this.perishable == 'true',
+        "student_id": this.selectedStudent.id
+      }, (data) => {
+        this.statusMessage = data.msg;
+      });
     }
   }
 });
-
-new Vue({
-  el: "#vue-app"
-})

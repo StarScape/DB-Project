@@ -1,13 +1,22 @@
-<h1>Package In</h1>
+<h1>Package Check-In</h1>
 
-<student-search>
+<h4>Select Student</h4>
+<p>First, you must link the package to a student. You may search below.</p>
+<student-search v-on:student-selected='studentSelected'></student-search>
 
-</student-search>
+<div v-if='selectedStudent != null'>
+  <h4>Is the item Perishable?</h4>
+  <input v-model='perishable' type="radio" name='perishable' value=true id='yesRadio'>
+  <label for='yesRadio'>Yes</label>
 
-<br>
-<!-- 
-<%= render 'form', package: @package %>
- -->
+  <input v-model='perishable' type="radio" name='perishable' value=false id='noRadio'>
+  <label for='noRadio'>No</label>
+</div>
 
-<%= link_to 'Back', packages_path %>
+<div v-if='perishable != null'>
+  <button class='btn btn-primary' @click='registerPackage'>Check in Package</button>
+  <p>{{ statusMessage }}</p>
+</div>
+
+<%= link_to 'Back', root_path, class: "bg bg-primary" %>
 <%= javascript_include_tag 'packages' %>
