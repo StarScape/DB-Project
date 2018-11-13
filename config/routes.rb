@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
   get '/students/search',  to: 'students#search'
 
-  get  '/packages/new',    to: 'packages#new'
-  post '/packages/new',    to: 'packages#create'
-  get  '/packages/edit',   to: 'packages#edit'
-  post  '/packages/edit',  to: 'packages#update'
+  get  '/packages/in',      to: 'packages#new'
+  post '/packages/in',      to: 'packages#create'
+  get  '/packages/out',     to: 'packages#edit'
+  post  '/packages/out',    to: 'packages#update'
   
   get  '/packages/find',   to: 'packages#find'
 

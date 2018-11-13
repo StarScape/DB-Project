@@ -10,7 +10,7 @@ class PackagesController < ApplicationController
   def show
   end
 
-  # GET /packages/new
+  # GET /packages/in
   def new
   end
 
@@ -26,8 +26,7 @@ class PackagesController < ApplicationController
     render json: { student: student, packages: packages.to_a }
   end
 
-  # POST /packages
-  # POST /packages.json
+  # POST /packages/in
   def create
     @package = Package.new({
       student_id: params[:student_id],

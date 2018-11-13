@@ -18,3 +18,4 @@ The website should then be up and running at localhost:3000. The index page isn'
 
 TODO:
 * rename package files/routes/actions to be consistent
+* rename package files/routes/actions to be consistent

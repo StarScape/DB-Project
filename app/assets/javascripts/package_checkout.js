@@ -16,7 +16,7 @@ var vm = new Vue({
     checkoutPackage: function(package) {
       console.log(package);
 
-      $.post('/packages/edit', { 'package_id': package.id }, (data) => {
+      $.post('/packages/out', { 'package_id': package.id }, (data) => {
         if (data.success) {
           this.packages = this.packages.filter(val => val != package);
         }
