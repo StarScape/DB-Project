@@ -17,5 +17,5 @@ The website should then be up and running at localhost:3000. The index page isn'
 -- Jack
 
 TODO:
-* rename package files/routes/actions to be consistent
-* rename package files/routes/actions to be consistent
+* refactor reservations stuff into reservations.js, remove Vue component
+* prevent reservation dates from overlapping
