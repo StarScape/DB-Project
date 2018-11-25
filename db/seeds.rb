@@ -42,3 +42,37 @@ Student.create({
   lname: 'Jones',
   email: "jim@appstate.edu"
 })
+
+buildings = [
+  "Appalachian Heights",
+  "Appalachian Panhellenic Hall",
+  "Belk Hall",
+  "Bowie Hall ",
+  "Cannon Hall ",
+  "Coltrane Hall ",
+  "Cone Hall ",
+  "Doughton Hall ",
+  "East Hall ",
+  "Eggers Hall ",
+  "Frank Hall ",
+  "Gardner Hall ",
+  "Hoey Hall ",
+  "Justice Hall ",
+  "Living Learning Center ",
+  "Lovill Hall ",
+  "Mountaineer Hall ",
+  "Newland Hall",
+  "Summit Hall",
+  "White Hall"
+]
+
+buildings.each do |b|
+  4.times do |f|
+    floor = (f + 1)
+
+    20.times do |r|
+      room_number = floor * 100 + (r + 1)
+      Room.create(number: room_number, building: b)
+    end
+  end
+end

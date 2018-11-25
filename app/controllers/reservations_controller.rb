@@ -1,74 +1,45 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-
-  # GET /reservations
-  # GET /reservations.json
   def index
-    @reservations = Reservation.all
   end
 
-  # GET /reservations/1
-  # GET /reservations/1.json
-  def show
+  def find
+    room = Room.find_by(building: params[:building], number: params[:room])
+
+    if !room.nil?
+      reservations = Reservation.where(room_id: room.id).all
+      render json: { room_exists: true, reservations: reservations }
+    else
+      render json: { room_exists: false }
+    end
   end
 
-  # GET /reservations/new
-  def new
-    @reservation = Reservation.new
-  end
-
-  # GET /reservations/1/edit
-  def edit
-  end
-
-  # POST /reservations
-  # POST /reservations.json
   def create
-    @reservation = Reservation.new(reservation_params)
+    room = Room.find_by(building: params[:building], number: params[:room])
+    start_date = Date.parse params[:start]
+    end_date = Date.parse params[:end]
 
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render :show, status: :created, location: @reservation }
-      else
-        format.html { render :new }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+    Reservation.create(start_date: start_date, end_date: end_date, room_id: room.id)
+    render json: { success: true }
   end
 
-  # PATCH/PUT /reservations/1
-  # PATCH/PUT /reservations/1.json
+  # Update checkin status
   def update
-    respond_to do |format|
-      if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @reservation }
-      else
-        format.html { render :edit }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
+    id = params[:id]
+    reservation = Reservation.find(id)
+    reservation.update(checked_in: params[:checked_in])
+
+    render json: { success: true }
   end
 
-  # DELETE /reservations/1
-  # DELETE /reservations/1.json
   def destroy
-    @reservation.destroy
-    respond_to do |format|
-      format.html { redirect_to reservations_url, notice: 'Reservation was successfully destroyed.' }
-      format.json { head :no_content }
+    id = params[:reservation_id]
+    reservation = Reservation.find(id)
+
+    if !reservation.nil?
+      reservation.destroy
+      render json: { success: true }
+    else
+      render json: { success: false }
     end
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reservation
-      @reservation = Reservation.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def reservation_params
-      params.require(:reservation).permit(:start_date, :end_date, :recurring, :room_id)
-    end
 end

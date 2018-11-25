@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Project</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,7 @@
     
     <!-- Vue templates -->
     <%= render :partial => './vue/student_search.vue.erb' %>
+    <%= render :partial => './vue/reservation_search.vue.erb' %>
   </head>
 
   <body>

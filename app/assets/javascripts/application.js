@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
 //= require vue.min
 //= require student_search
+//= require reservation_search
