@@ -7,8 +7,15 @@ class ReservationsController < ApplicationController
 
     if !room.nil?
       # Insecure, don't care
-      connection = ActiveRecord::Base::connection
-      reservations = connection.exec_query("SELECT * FROM reservations as r JOIN students as s ON s.id = r.student_id WHERE r.room_id=#{room.id}")
+      # connection = ActiveRecord::Base::connection
+      # reservations = connection.exec_query("SELECT * FROM reservations as r JOIN students as s ON s.id = r.student_id WHERE r.room_id=#{room.id}")
+      reservations = Reservation.where(room_id: room.id).all.as_json
+      reservations.map do |r|
+        student = Student.find(r["student_id"])
+        r["lname"] = student.lname
+        r["bannerID"] = student.bannerID
+      end
+
       render json: { room_exists: true, reservations: reservations }
     else
       render json: { room_exists: false }
