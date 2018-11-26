@@ -1,0 +1,16 @@
+<template id='key-checkout-template'>
+  
+  <div v-if='!buttonClicked'>
+    <button @click='buttonClicked = true' class='btn btn-primary'>Check key out</button>
+  </div>
+
+  <div v-else>
+    <input  v-model='bannerID'
+            v-on:keypress.enter='checkout'
+            type="text"
+            placeholder="Enter BannerID...">
+
+    <button @click='checkout'
+          class='btn btn-primary'>Submit</button>
+  </div>
+</template>

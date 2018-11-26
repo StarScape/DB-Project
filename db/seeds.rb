@@ -76,3 +76,8 @@ buildings.each do |b|
     end
   end
 end
+
+Room.all.each do |room|
+  SpareKey.create(room_id: room.id)
+  SpareKey.create(room_id: room.id)
+end

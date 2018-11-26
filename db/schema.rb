@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181126171616) do
+ActiveRecord::Schema.define(version: 20181126175853) do
 
   create_table "das", force: :cascade do |t|
     t.string "email"
@@ -51,10 +51,11 @@ ActiveRecord::Schema.define(version: 20181126171616) do
   end
 
   create_table "spare_keys", force: :cascade do |t|
-    t.string "keycode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "room_id"
+    t.boolean "checked_out"
+    t.integer "student_id"
   end
 
   create_table "students", force: :cascade do |t|

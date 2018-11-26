@@ -1,29 +1,44 @@
-<p id="notice"><%= notice %></p>
+<h1>Key Checkin/Checkout</h1>
+<div>
+  <div class='input-with-label'>
+    <label>Residence Hall</label>
+    <select name="hall" v-model='selectedHall'>
+      <option v-for='hall in residenceHalls'>
+            {{ hall }}
+      </option>
+    </select>
+  </div>
 
-<h1>Spare Keys</h1>
+  <div class='input-with-label'>
+    <label>Room #</label>
+    <input type='text' maxlength='3' size='3' v-model='selectedRoom'>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Barcode</th>
-      <th>Keycode</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <input type="submit" value="Search" class='btn btn-primary' v-on:click='findKeys'>
 
-  <tbody>
-    <% @spare_keys.each do |spare_key| %>
+  <div v-if='keys.length > 0'>
+    <h2>Reservations for this room</h2>
+    <table class='table' >
       <tr>
-        <td><%= spare_key.barcode %></td>
-        <td><%= spare_key.keycode %></td>
-        <td><%= link_to 'Show', spare_key %></td>
-        <td><%= link_to 'Edit', edit_spare_key_path(spare_key) %></td>
-        <td><%= link_to 'Destroy', spare_key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Key #</th>
+        <th>Checkout status</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr v-for="key in keys">
+        <td>{{ key.id }}</td>
+        <td>{{ formatCheckoutStatus(key) }}</td>
 
-<br>
+        <td v-if='key.checked_out'>
+          <button v-on:click='checkin(key)' class='btn btn-primary'>Check key in</button>
+        </td>
+        
+        <td v-else>
+          <key-checkout v-bind:key-ref='key' v-on:checkout="checkout">
+        </td>
+      </tr>
+    </table>
+  </div>
 
-<%= link_to 'New Spare Key', new_spare_key_path %>
+</div>
+
+<%= javascript_include_tag 'key_checkout' %>
+<%= javascript_include_tag 'spare_keys' %>

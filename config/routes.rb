@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  # resources :reservations
-  # resources :spare_keys
-  # resources :rooms
-  # resources :packages
-  # resources :students
-
   root 'home_page#index'
 
   get    '/login',   to: 'sessions#new'
@@ -25,6 +19,7 @@ Rails.application.routes.draw do
   post    '/reservations/update', to: 'reservations#update'
   delete  '/reservations/delete', to: 'reservations#destroy'
   
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get     '/keys',                to: 'spare_keys#index'
+  get     '/keys/find',           to: 'spare_keys#find'
+  post    '/keys/update',         to: 'spare_keys#update'
 end

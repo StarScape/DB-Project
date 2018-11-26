@@ -7,46 +7,31 @@ class SpareKeysController < ApplicationController
 
     if !room.nil?
       keys = SpareKey.where(room_id: room.id).all.as_json
-      reservations.map do |r|
-        student = Student.find(r["student_id"])
-        r["lname"] = student.lname
-        r["bannerID"] = student.bannerID
+
+      keys.map do |k|
+        unless k['student_id'].nil?
+          student = Student.find(k['student_id'])
+          k['fname'] = student.fname
+          k['lname'] = student.lname
+        end
       end
 
-      render json: { room_exists: true, reservations: reservations }
+      render json: { room_exists: true, keys: keys }
     else
       render json: { room_exists: false }
     end
   end
 
-  def create
-    room = Room.find_by(building: params[:building], number: params[:room])
-    student_id = Student.find_by(bannerID: params[:bannerID]).id
-    start_date = DateTime.parse params[:start]
-    end_date = DateTime.parse params[:end]
-
-    Reservation.create(start_date: start_date, end_date: end_date, room_id: room.id, student_id: student_id)
-    render json: { success: true }
-  end
-
-  # Update checkin status
   def update
-    id = params[:id]
-    reservation = Reservation.find(id)
-    reservation.update(checked_in: params[:checked_in])
+    key = SpareKey.find(params[:key_id])
+    student = Student.find_by(bannerID: params[:bannerID])
+    student_id = nil
 
-    render json: { success: true }
-  end
-
-  def destroy
-    id = params[:reservation_id]
-    reservation = Reservation.find(id)
-
-    if !reservation.nil?
-      reservation.destroy
-      render json: { success: true }
-    else
-      render json: { success: false }
+    unless student.nil?
+      student_id = student.id
     end
+
+    key.update(checked_out: params[:checkout_status], student_id: student_id)
+    render json: { success: true }
   end
 end
