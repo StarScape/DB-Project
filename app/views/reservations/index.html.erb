@@ -50,7 +50,7 @@
 
   <br><br><br><br><br><br>
 
-  <div v-if='searchSent && !reservationCreated'>
+  <div v-if='searchSent'>
     <h3>Create a new reservation</h3>
 
     <div class='input-with-label'>
@@ -71,8 +71,8 @@
     <input type="submit" value="Create Reservation" class='btn btn-primary' v-on:click='createReservation'>
   </div>
 
-  <div v-else-if='reservationCreated'>
-    <h3>Reservation created successfully. Please wait...</h3>
+  <div v-if='reservationCreated'>
+    <h3>Reservation created successfully.</h3>
   </div>
 </div>
 

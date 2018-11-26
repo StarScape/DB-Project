@@ -44,7 +44,15 @@ var vm = new Vue({
   methods: {
     submitSearch: function() {
       this.searchSent = true;
+      this.refreshList();
 
+      // Datepickers done with jQuery b.c. lazy
+      Vue.nextTick(() => {
+        $('.datepicker').datepicker();
+      });
+    },
+
+    refreshList: function() {
       $.get('reservations/find', { building: this.selectedHall, room: this.selectedRoom }, (data) => {
         if (data['room_exists']) {
           this.reservations = data.reservations;
@@ -52,11 +60,6 @@ var vm = new Vue({
         else {
           alert('Room does not exist.');
         }
-      });
-
-      // Datepickers done with jQuery b.c. lazy
-      Vue.nextTick(() => {
-        $('.datepicker').datepicker();
       });
     },
 
@@ -88,6 +91,7 @@ var vm = new Vue({
         return;
       }
 
+
       $.post('reservations/new', {
         building: this.selectedHall,
         room: this.selectedRoom,
@@ -97,7 +101,11 @@ var vm = new Vue({
       }, (data) => {
         if (data.success) {
           this.reservationCreated = true;
-          // setTimeout(() => window.location.reload(), 1000)
+          setTimeout(() => {
+            $('.datepicker').val('');
+            this.bannerID = null;
+            this.refreshList();
+          }, 1000);
         }
       });
     },

@@ -25,8 +25,8 @@ class ReservationsController < ApplicationController
   def create
     room = Room.find_by(building: params[:building], number: params[:room])
     student_id = Student.find_by(bannerID: params[:bannerID]).id
-    start_date = Date.parse params[:start]
-    end_date = Date.parse params[:end]
+    start_date = DateTime.parse params[:start]
+    end_date = DateTime.parse params[:end]
 
     Reservation.create(start_date: start_date, end_date: end_date, room_id: room.id, student_id: student_id)
     render json: { success: true }
