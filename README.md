@@ -17,5 +17,6 @@ The website should then be up and running at localhost:3000. The index page isn'
 -- Jack
 
 TODO:
-* Room search as component
-* Key check in/out
+* Secure user login
+* Mailer
+* Make everything pretty
