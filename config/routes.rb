@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # resources :reservations
-  resources :spare_keys
-  resources :rooms
+  # resources :spare_keys
+  # resources :rooms
   # resources :packages
   # resources :students
 

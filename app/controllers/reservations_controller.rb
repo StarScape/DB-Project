@@ -6,9 +6,6 @@ class ReservationsController < ApplicationController
     room = Room.find_by(building: params[:building], number: params[:room])
 
     if !room.nil?
-      # Insecure, don't care
-      # connection = ActiveRecord::Base::connection
-      # reservations = connection.exec_query("SELECT * FROM reservations as r JOIN students as s ON s.id = r.student_id WHERE r.room_id=#{room.id}")
       reservations = Reservation.where(room_id: room.id).all.as_json
       reservations.map do |r|
         student = Student.find(r["student_id"])
