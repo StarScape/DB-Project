@@ -20,12 +20,14 @@
     <h2>Reservations for this room</h2>
     <table class='table' >
       <tr>
-        <th>#</th>
+        <th>Student Last Name</th>
+        <th>BannerID</th>
         <th>From</th>
         <th>Until</th>
       </tr>
       <tr v-for="(r, i) in reservations">
-        <td>{{ i+1 }}</td>
+        <td>{{ r.lname }}</td>
+        <td>{{ r.bannerID }}</td>
         <td>{{ formatDate(r.start_date) }}</td>
         <td>{{ formatDate(r.end_date) }}</td>
         <td>
@@ -59,6 +61,11 @@
     <div class='input-with-label'>
       <label>End Date</label>
       <input type='text' id='end-date' class='datepicker'>
+    </div>
+
+    <div class='input-with-label'>
+      <label>BannerID</label>
+      <input type='text' v-model='bannerID'>
     </div>
 
     <input type="submit" value="Create Reservation" class='btn btn-primary' v-on:click='createReservation'>

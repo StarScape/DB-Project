@@ -33,6 +33,7 @@ var vm = new Vue({
 
       newReservationStart: "",
       newReservationEnd: "",
+      bannerID: null,
       reservationCreated: false
     }
   },
@@ -43,6 +44,7 @@ var vm = new Vue({
   methods: {
     submitSearch: function() {
       this.searchSent = true;
+
       $.get('reservations/find', { building: this.selectedHall, room: this.selectedRoom }, (data) => {
         if (data['room_exists']) {
           this.reservations = data.reservations;
@@ -54,9 +56,7 @@ var vm = new Vue({
 
       // Datepickers done with jQuery b.c. lazy
       Vue.nextTick(() => {
-        this.$el.querySelectorAll('.datepicker').forEach((elem) => {
-          $(elem).datepicker();
-        });
+        $('.datepicker').datepicker();
       });
     },
 
@@ -65,11 +65,19 @@ var vm = new Vue({
       let reservationStart = $('#start-date').datepicker('getDate');
       let reservationEnd = $('#end-date').datepicker('getDate');
 
+      // Can't end before it starts
+      // if (reservationEnd <= reservationStart) {
+      //   alert("Invalid date range.");
+      //   return;
+      // }
+
+
       $.post('reservations/new', {
         building: this.selectedHall,
         room: this.selectedRoom,
+        bannerID: this.bannerID,
         start: reservationStart,
-        end: reservationEnd
+        end: reservationEnd,
       }, (data) => {
         if (data.success) {
           this.reservationCreated = true;

@@ -1,4 +1,5 @@
 class Reservation < ApplicationRecord
+  belongs_to :student
   before_create :set_defaults
 
   private

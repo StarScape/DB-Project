@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  has_many :reservations
   before_create :set_defaults
 
   def self.search(search)

@@ -6,7 +6,9 @@ class ReservationsController < ApplicationController
     room = Room.find_by(building: params[:building], number: params[:room])
 
     if !room.nil?
-      reservations = Reservation.where(room_id: room.id).all
+      # Insecure, don't care
+      connection = ActiveRecord::Base::connection
+      reservations = connection.exec_query("SELECT * FROM reservations as r JOIN students as s ON s.id = r.student_id WHERE r.room_id=#{room.id}")
       render json: { room_exists: true, reservations: reservations }
     else
       render json: { room_exists: false }
@@ -15,10 +17,11 @@ class ReservationsController < ApplicationController
 
   def create
     room = Room.find_by(building: params[:building], number: params[:room])
+    student_id = Student.find_by(bannerID: params[:bannerID]).id
     start_date = Date.parse params[:start]
     end_date = Date.parse params[:end]
 
-    Reservation.create(start_date: start_date, end_date: end_date, room_id: room.id)
+    Reservation.create(start_date: start_date, end_date: end_date, room_id: room.id, student_id: student_id)
     render json: { success: true }
   end
 
