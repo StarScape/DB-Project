@@ -62,15 +62,31 @@ var vm = new Vue({
 
     createReservation: function() {
       // Get data manually b.c of jQuery/Vue interrop weirdness
-      let reservationStart = $('#start-date').datepicker('getDate');
-      let reservationEnd = $('#end-date').datepicker('getDate');
+      window.reservationStart = $('#start-date').datepicker('getDate');
+      window.reservationEnd = $('#end-date').datepicker('getDate');
 
-      // Can't end before it starts
-      // if (reservationEnd <= reservationStart) {
-      //   alert("Invalid date range.");
-      //   return;
-      // }
+      let isOverlapping = (r) => {
+        let start = new Date(r.start_date);
+        let end = new Date(r.end_date);
 
+        return ((start >= reservationStart && start < reservationEnd) ||
+              (end > reservationStart && end <= reservationEnd));
+      }
+
+      // console.log(this.reservations.filter(isOverlapping));
+      // Validate inputs
+      if (!reservationStart || !reservationEnd || !this.bannerID.startsWith('900')) {
+        alert("Make sure all inputs are correct");
+        return;
+      }
+      if (reservationEnd <= reservationStart) {
+        alert("Invalid date range.");
+        return;
+      }
+      else if (this.reservations.filter(isOverlapping).length > 0) {
+        alert("Cannot overlap with other reservations.");
+        return;
+      }
 
       $.post('reservations/new', {
         building: this.selectedHall,
@@ -81,7 +97,7 @@ var vm = new Vue({
       }, (data) => {
         if (data.success) {
           this.reservationCreated = true;
-          setTimeout(() => window.location.reload(), 1000)
+          // setTimeout(() => window.location.reload(), 1000)
         }
       });
     },
