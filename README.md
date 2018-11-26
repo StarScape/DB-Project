@@ -17,6 +17,5 @@ The website should then be up and running at localhost:3000. The index page isn'
 -- Jack
 
 TODO:
-* Prevent reservation dates from overlapping
-* Add BannerID to reservations
-* Add link to reservations on homepage
+* Room search as component
+* Key check in/out

@@ -117,7 +117,7 @@ var vm = new Vue({
         data: { 'reservation_id': reservation.id },
         success: (data) => {
           if (data.success) {
-            this.reservations = this.reservations.filter(val => val != reservation);
+            this.refreshList();
           }
           else {
             alert("The database cannot complete the action at the given time.");
