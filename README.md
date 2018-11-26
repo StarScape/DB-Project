@@ -17,5 +17,6 @@ The website should then be up and running at localhost:3000. The index page isn'
 -- Jack
 
 TODO:
-* refactor reservations stuff into reservations.js, remove Vue component
-* prevent reservation dates from overlapping
+* Prevent reservation dates from overlapping
+* Add BannerID to reservations
+* Add link to reservations on homepage

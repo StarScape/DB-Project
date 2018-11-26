@@ -17,4 +17,3 @@
 //= require turbolinks
 //= require vue.min
 //= require student_search
-//= require reservation_search
