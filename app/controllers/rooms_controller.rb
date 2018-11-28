@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_action :confirm_signed_in
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms

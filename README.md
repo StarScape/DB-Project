@@ -16,6 +16,10 @@ The website should then be up and running at localhost:3000. The index page isn'
 
 -- Jack
 
+Login:
+email: fryja@appstate.edu
+password: foobar
+
 TODO:
 * Secure user login
 * Mailer

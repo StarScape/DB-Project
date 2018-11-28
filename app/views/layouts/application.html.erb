@@ -15,7 +15,13 @@
 
   <body>
     <div id='vue-app'>
-      
+
+      <% if session[:da_id] %>
+        <div id='logout'>
+          <%= link_to "Logout", { controller: "sessions", method: :delete, action: "destroy" }, class: 'btn btn-primary' %>
+        </div>      
+      <% end %>
+
       <div class="flash-container">
         <% flash.each do |message_type, message| %>
           <div><%= message %></div>

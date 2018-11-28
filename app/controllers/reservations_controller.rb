@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+  before_action :confirm_signed_in
+
   def index
   end
 

@@ -1,4 +1,6 @@
 class PackagesController < ApplicationController
+  before_action :confirm_signed_in
+  
   # GET /packages
   # GET /packages.json
   def index

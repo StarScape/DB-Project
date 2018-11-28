@@ -1,5 +1,5 @@
 class DA < ApplicationRecord
+  has_secure_password
 
-  def authenticate(pass)
-  end
+  
 end
