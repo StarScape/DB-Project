@@ -1,79 +1,85 @@
-<h1>Reservations</h1>
-<div>
-  <div class='input-with-label'>
-    <label>Residence Hall</label>
-    <select name="hall" v-model='selectedHall'>
-      <option v-for='hall in residenceHalls'>
-            {{ hall }}
-      </option>
-    </select>
-  </div>
+<% content_for :title do %>
+  Reservations
+<% end %>
 
-  <div class='input-with-label'>
-    <label>Room #</label>
-    <input type='text' maxlength='3' size='3' v-model='selectedRoom'>
-  </div>
-
-  <input type="submit" value="Search" class='btn btn-primary' v-on:click='submitSearch'>
-
-  <div v-if='searchSent && reservations.length > 0'>
-    <h2>Reservations for this room</h2>
-    <table class='table' >
-      <tr>
-        <th>Student Last Name</th>
-        <th>BannerID</th>
-        <th>From</th>
-        <th>Until</th>
-      </tr>
-      <tr v-for="(r, i) in reservations">
-        <td>{{ r.lname }}</td>
-        <td>{{ r.bannerID }}</td>
-        <td>{{ formatDate(r.start_date) }}</td>
-        <td>{{ formatDate(r.end_date) }}</td>
-        <td>
-          <button class='btn btn-primary' @click='deleteReservation(r)'>Cancel Reservation</button>
-        </td>
-        <td>
-          <button v-if='!r.checked_in'
-                  class='btn btn-primary'
-                  @click='updateReservation(r, true)'>Check In</button>
-          <button v-else
-                  class='btn btn-primary'
-                  @click='deleteReservation(r)'>Check Out</button>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div v-else>
-    <h5 v-if='searchSent'>There are currently no reservations for this room.</h5>
-  </div>
-
-  <br><br><br><br><br><br>
-
-  <div v-if='searchSent'>
-    <h3>Create a new reservation</h3>
-
+<% content_for :body do %>
+  <div>
     <div class='input-with-label'>
-      <label>Start Date</label>
-      <input type='text' id='start-date' class='datepicker'>
-    </div>
-    
-    <div class='input-with-label'>
-      <label>End Date</label>
-      <input type='text' id='end-date' class='datepicker'>
+      <label>Residence Hall</label>
+      <select name="hall" v-model='selectedHall' class='search-box'>
+        <option v-for='hall in residenceHalls'>
+              {{ hall }}
+        </option>
+      </select>
     </div>
 
     <div class='input-with-label'>
-      <label>BannerID</label>
-      <input type='text' v-model='bannerID'>
+      <label>Room #</label>
+      <input type='text' maxlength='3' size='3' class='search-box' v-model='selectedRoom'>
     </div>
 
-    <input type="submit" value="Create Reservation" class='btn btn-primary' v-on:click='createReservation'>
+    <input type="submit" value="Search" class='btn btn-primary' v-on:click='submitSearch'>
+
+    <div v-if='searchSent && reservations.length > 0'>
+      <h2>Reservations for this room</h2>
+      <table class='table' >
+        <tr>
+          <th>Student Last Name</th>
+          <th>BannerID</th>
+          <th>From</th>
+          <th>Until</th>
+        </tr>
+        <tr v-for="(r, i) in reservations">
+          <td>{{ r.lname }}</td>
+          <td>{{ r.bannerID }}</td>
+          <td>{{ formatDate(r.start_date) }}</td>
+          <td>{{ formatDate(r.end_date) }}</td>
+          <td>
+            <button class='btn btn-primary' @click='deleteReservation(r)'>Cancel</button>
+          </td>
+          <td>
+            <button v-if='!r.checked_in'
+                    class='btn btn-primary'
+                    @click='updateReservation(r, true)'>Checkin</button>
+            <button v-else
+                    class='btn btn-primary'
+                    @click='deleteReservation(r)'>Checkout</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div v-else>
+      <h5 v-if='searchSent'>There are currently no reservations for this room.</h5>
+    </div>
+
+    <br><br><br><br><br><br>
+
+    <div v-if='searchSent'>
+      <h3>Create a new reservation</h3>
+
+      <div class='input-with-label'>
+        <label>Start Date</label>
+        <input type='text' id='start-date' class='datepicker'>
+      </div>
+      
+      <div class='input-with-label'>
+        <label>End Date</label>
+        <input type='text' id='end-date' class='datepicker'>
+      </div>
+
+      <div class='input-with-label'>
+        <label>BannerID</label>
+        <input type='text' v-model='bannerID'>
+      </div>
+
+      <input type="submit" value="Create Reservation" class='btn btn-primary' v-on:click='createReservation'>
+    </div>
+
+    <div v-if='reservationCreated'>
+      <p>Reservation created successfully.</p>
+    </div>
   </div>
 
-  <div v-if='reservationCreated'>
-    <p>Reservation created successfully.</p>
-  </div>
-</div>
-
-<%= javascript_include_tag 'reservations' %>
+  <%= link_to 'Back', root_path %>
+  <%= javascript_include_tag 'reservations' %>
+<% end %>

@@ -1,44 +1,50 @@
-<h1>Key Checkin/Checkout</h1>
-<div>
-  <div class='input-with-label'>
-    <label>Residence Hall</label>
-    <select name="hall" v-model='selectedHall'>
-      <option v-for='hall in residenceHalls'>
-            {{ hall }}
-      </option>
-    </select>
+<% content_for :title do %>
+  Key Checkin/Checkout
+<% end %>
+
+<% content_for :body do %>
+  <div>
+    <div class='input-with-label'>
+      <label>Residence Hall</label>
+      <select name="hall" v-model='selectedHall' class='search-box'>
+        <option v-for='hall in residenceHalls'>
+              {{ hall }}
+        </option>
+      </select>
+    </div>
+
+    <div class='input-with-label'>
+      <label>Room #</label>
+      <input type='text' maxlength='3' size='3' v-model='selectedRoom' class='search-box'>
+    </div>
+
+    <input type="submit" value="Search" class='btn' v-on:click='findKeys'>
+
+    <div v-if='keys.length > 0'>
+      <h2>Reservations for this room</h2>
+      <table class='table' >
+        <tr>
+          <th>Key #</th>
+          <th>Checkout status</th>
+        </tr>
+        <tr v-for="key in keys">
+          <td>{{ key.id }}</td>
+          <td>{{ formatCheckoutStatus(key) }}</td>
+
+          <td v-if='key.checked_out'>
+            <button v-on:click='checkin(key)' class='btn'>Check key in</button>
+          </td>
+          
+          <td v-else>
+            <key-checkout v-bind:key-ref='key' v-on:checkout="checkout">
+          </td>
+        </tr>
+      </table>
+    </div>
+
   </div>
 
-  <div class='input-with-label'>
-    <label>Room #</label>
-    <input type='text' maxlength='3' size='3' v-model='selectedRoom'>
-  </div>
-
-  <input type="submit" value="Search" class='btn btn-primary' v-on:click='findKeys'>
-
-  <div v-if='keys.length > 0'>
-    <h2>Reservations for this room</h2>
-    <table class='table' >
-      <tr>
-        <th>Key #</th>
-        <th>Checkout status</th>
-      </tr>
-      <tr v-for="key in keys">
-        <td>{{ key.id }}</td>
-        <td>{{ formatCheckoutStatus(key) }}</td>
-
-        <td v-if='key.checked_out'>
-          <button v-on:click='checkin(key)' class='btn btn-primary'>Check key in</button>
-        </td>
-        
-        <td v-else>
-          <key-checkout v-bind:key-ref='key' v-on:checkout="checkout">
-        </td>
-      </tr>
-    </table>
-  </div>
-
-</div>
-
-<%= javascript_include_tag 'key_checkout' %>
-<%= javascript_include_tag 'spare_keys' %>
+  <%= link_to 'Back', root_path %>
+  <%= javascript_include_tag 'key_checkout' %>
+  <%= javascript_include_tag 'spare_keys' %>
+<% end %>

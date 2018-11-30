@@ -1,22 +1,31 @@
-<h1>Package Check-In</h1>
+<% content_for :title do %>
+  Package Check-In
+<% end %>
 
-<h4>Select Student</h4>
-<p>First, you must link the package to a student. You may search by last name below.</p>
-<student-search v-on:student-selected='studentSelected'></student-search>
+<!-- <h1>Package Check-In</h1> -->
+<% content_for :body do %>
+  <h4>Select Student</h4>
+  <p>First, you must link the package to a student. You may search by last name below.</p>
+  <student-search v-on:student-selected='studentSelected'></student-search>
 
-<div v-if='selectedStudent != null'>
-  <h4>Is the item Perishable?</h4>
-  <input v-model='perishable' type="radio" name='perishable' value=true id='yesRadio'>
-  <label for='yesRadio'>Yes</label>
+  <div v-if='selectedStudent != null'>
+    <h4>Is the item Perishable?</h4>
+    <div class='input-with-label'>
+      <label for='yesRadio'>Yes</label>
+      <input v-model='perishable' type="radio" name='perishable' value=true id='yesRadio'>
+    </div>
 
-  <input v-model='perishable' type="radio" name='perishable' value=false id='noRadio'>
-  <label for='noRadio'>No</label>
-</div>
+    <div class='input-with-label'>
+      <label for='noRadio'>No</label>
+      <input v-model='perishable' type="radio" name='perishable' value=false id='noRadio'>
+    </div>
+  </div>
 
-<div v-if='perishable != null'>
-  <button class='btn btn-primary' @click='registerPackage'>Check in Package</button>
-  <p>{{ statusMessage }}</p>
-</div>
+  <div v-if='perishable != null'>
+    <button class='btn btn-primary' @click='registerPackage'>Check in Package</button>
+    <p>{{ statusMessage }}</p>
+  </div>
 
-<%= link_to 'Back', root_path, class: "btn btn-primary" %>
-<%= javascript_include_tag 'package_checkin' %>
+  <%= link_to 'Back', root_path %>
+  <%= javascript_include_tag 'package_checkin' %>
+<% end %>

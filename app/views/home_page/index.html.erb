@@ -1,7 +1,10 @@
-<%= image_tag 'logo' %>
-<h1>Housing Management Home</h1>
+<% content_for :title do %>
+  Housing Management Home
+<% end %>
 
-<div id='homepage-content'>
+<!-- <h1>Housing Management Home</h1> -->
+
+<% content_for :body do %>
   <div class='homepage-link'>
     <%= link_to "Package in", { controller: "packages", action: "new" } %>
   </div>
@@ -14,4 +17,4 @@
   <div class='homepage-link'>
     <%= link_to "Manage Spare Keys", { controller: "spare_keys", action: "index", method: :delete } %>
   </div>
-</div>
+<% end %>

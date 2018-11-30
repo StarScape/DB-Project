@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div id='vue-app'>
+    <div id='main-container'>
       <header>
         <div id='header-logo'>
           <a href="/">
@@ -48,7 +48,7 @@
       <div id='body'>
         <div id='left-pad'></div>
 
-        <main id='content'>
+        <main id='vue-app'>
           <% if session[:da_id] %>
             <div id='logout'>
             </div>      
@@ -59,8 +59,13 @@
               <div><%= message %></div>
             <% end %>
           </div>
-
-          <%= yield %>
+          
+          <%= image_tag 'logo' %>
+          <h1><%= yield :title %></h1>
+  
+          <div id='content'>
+            <%= yield :body %>
+          </div>
         </main>
 
         <div id='right-pad'></div>

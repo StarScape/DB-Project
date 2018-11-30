@@ -20,8 +20,10 @@
 
 // Lord forgive me, for I have sinned...
 $(document).ready(() => {
+  console.log("ready");
 
   $('.hamburger').click(() => {
+    console.log("clicked");
     let nav = $('#header-controls nav');
     $('.hamburger').toggleClass('is-active');
 
