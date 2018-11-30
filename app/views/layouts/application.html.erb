@@ -17,13 +17,15 @@
     <div id='vue-app'>
       <header>
         <div id='header-logo'>
-          <%= image_tag "logo2" %>
+          <a href="/">
+            <%= image_tag "logo2" %>
+          </a>
         </div>
         <div id='header-controls'>
           <% unless @da.nil? %>
             <h6>Logged in as: <%= @da.name %></h6>
           <% end %>
-          
+
           <button class="hamburger hamburger--boring" type="button">
             <span class="hamburger-box">
               <span class="hamburger-inner"></span>
