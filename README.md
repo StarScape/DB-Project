@@ -20,7 +20,10 @@ Login:
 email: fryja@appstate.edu
 password: foobar
 
+Email for mailer:
+email: team2mailer@gmail.com
+password foobarbizzbuzz111
+
 TODO:
 * Fix database room population
-* Mailer
 * Be done

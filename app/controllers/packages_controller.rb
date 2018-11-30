@@ -41,7 +41,7 @@ class PackagesController < ApplicationController
     if @package.save
       render json: { msg: "Package created successfully" }
       # TODO: add account and smtp settings so this actually works
-      # PackageMailer.with(student: @student).package_arrived_email.deliver_later
+      PackageMailer.with(student: @student).package_arrived_email.deliver_later
     else
       render json: { msg: "Oh no! There was an error" }
     end
