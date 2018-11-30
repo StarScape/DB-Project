@@ -17,3 +17,20 @@
 //= require turbolinks
 //= require vue.min
 //= require student_search
+
+// Lord forgive me, for I have sinned...
+$(document).ready(() => {
+
+  $('.hamburger').click(() => {
+    let nav = $('#header-controls nav');
+    $('.hamburger').toggleClass('is-active');
+
+    if (nav.css('display') == 'none') {
+      nav.css('display', 'inherit');
+    }
+    else {
+      nav.css('display', 'none');
+    }
+  })
+
+});

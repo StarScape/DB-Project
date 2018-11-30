@@ -15,10 +15,132 @@
  */
 @import 'bootstrap';
 
+// Mountaineer black & gold ;)
+$black: #1C1C1C;
+$gold: #FFCD00;
+$offwhite: #fcfcfc;
+
 body {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  background: url(background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+ul, li {
+  list-style: none;
+  list-style-type: none;
+  padding: none;
+}
+
+#vue-app {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+header {
+  background-color: $black;
+  box-shadow: 0 3px 0px 0 rgba(0, 0, 0, 0.25);
+  // height: 50px;
+  padding: 5px 10px 5px 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  #header-logo {
+    flex: 0 0 100px;
+
+    img {
+      width: 200px;
+    }
+  }
+
+  #header-controls {
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+
+    h6 {
+      color: $offwhite;
+      margin: auto;
+      text-align: center;
+      padding-bottom: 4px;
+      margin-right: 50px;
+    }
+
+    nav {
+      display: none;
+      text-align: left;
+      position: absolute;
+      background-color: $black;
+      top: 69px;
+      right: 0px;
+      padding: 5px 10px 5px 20px;
+    }
+
+    ul {
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: $gold;
+      font-size: 1.4em;
+    }
+
+    a:hover {
+      color: $offwhite;
+      text-decoration: none;
+    }
+  }
+}
+
+#body {
+  display: flex;
+  flex: 1;
+}
+
+#left-pad, #right-pad {
+  display: flex;
+  flex: 0 0 16em;
+}
+
+#content {
+  padding-bottom: 500px;
+  padding-top: 50px;
+  background-color: $offwhite;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+
+  text-align: center;
+  flex: 1;
+}
+
+footer {
+  background-color: $black;
+  height: 100px;
+}
+
+a {
+  color: $gold;
 }
 
 a:visited {
-  color: white;
+  color: $gold;
+  // color: darken($gold, 15%);
+}
+
+a:hover {
+  color: $black;
+  background-color: transparent;
+  text-decoration: underline;
 }
