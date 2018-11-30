@@ -21,6 +21,6 @@ email: fryja@appstate.edu
 password: foobar
 
 TODO:
+* Fix database room population
 * Mailer
-* Fix style in other pages
-* Get rid of Bootstrap?
+* Be done
