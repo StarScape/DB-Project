@@ -21,6 +21,6 @@ email: fryja@appstate.edu
 password: foobar
 
 TODO:
-* Secure user login
 * Mailer
-* Make everything pretty
+* Fix style in other pages
+* Get rid of Bootstrap?
