@@ -19,8 +19,7 @@
 //= require student_search
 
 // Lord forgive me, for I have sinned...
-$(document).ready(() => {
-  console.log("ready");
+$(document).on('turbolinks:load', () => {
 
   $('.hamburger').click(() => {
     console.log("clicked");

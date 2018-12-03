@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     
     if da && da.authenticate(params[:session][:password])
       session[:da_id] = da.id
+      flash[:danger] = nil
       redirect_to root_url
     else
       flash[:danger] = "Invalid email/password"
