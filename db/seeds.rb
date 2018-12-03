@@ -47,20 +47,20 @@ buildings = [
   "Appalachian Heights",
   "Appalachian Panhellenic Hall",
   "Belk Hall",
-  "Bowie Hall ",
-  "Cannon Hall ",
-  "Coltrane Hall ",
-  "Cone Hall ",
-  "Doughton Hall ",
-  "East Hall ",
-  "Eggers Hall ",
-  "Frank Hall ",
-  "Gardner Hall ",
-  "Hoey Hall ",
-  "Justice Hall ",
-  "Living Learning Center ",
-  "Lovill Hall ",
-  "Mountaineer Hall ",
+  "Bowie Hall",
+  "Cannon Hall",
+  "Coltrane Hall",
+  "Cone Hall",
+  "Doughton Hall",
+  "East Hall",
+  "Eggers Hall",
+  "Frank Hall",
+  "Gardner Hall",
+  "Hoey Hall",
+  "Justice Hall",
+  "Living Learning Center",
+  "Lovill Hall",
+  "Mountaineer Hall",
   "Newland Hall",
   "Summit Hall",
   "White Hall"
@@ -81,3 +81,5 @@ Room.all.each do |room|
   SpareKey.create(room_id: room.id)
   SpareKey.create(room_id: room.id)
 end
+
+DA.create(name: "Jordan Fry", email: "fryja@appstate.edu", password: "foobar", password_confirmation: "foobar")

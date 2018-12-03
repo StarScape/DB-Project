@@ -1,13 +1,17 @@
-<h1>Please Log In</h1>
+<% content_for :title do %>
+  Please Log In
+<% end %>
 
-<%= form_for(:session, url: login_path) do |f| %>
+<% content_for :body do %>
+  <%= form_for(:session, url: login_path) do |f| %>
   <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.email_field :email, class: 'search-box' %>
   <br>
   <br>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, class: 'search-box' %>
   <br>
   <br>
-  <%= f.submit "Log in" %>
+  <%= f.submit "Log in", class: 'btn' %>
+  <% end %>
 <% end %>
