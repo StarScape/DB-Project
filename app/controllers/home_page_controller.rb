@@ -4,4 +4,8 @@ class HomePageController < ApplicationController
   def index
     @da = DA.find(session[:da_id])
   end
+
+  # Terrible place to put this, it's okay
+  def student_search
+  end
 end

@@ -1,0 +1,16 @@
+<% content_for :title do %>
+  Student Search
+<% end %>
+
+<% content_for :body do %>
+  <p>You may search for students by last name below.</p>
+  <student-search></student-search>
+  <%= link_to 'Back', root_path %>
+  
+
+  <script>
+    var vm = new Vue({
+      el: "#vue-app"
+    });
+  </script>
+<% end %>

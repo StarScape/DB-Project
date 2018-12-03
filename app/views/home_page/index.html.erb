@@ -15,6 +15,12 @@
     <%= link_to "Manage Reservations", { controller: "reservations", action: "index" } %>
   </div>
   <div class='homepage-link'>
-    <%= link_to "Manage Spare Keys", { controller: "spare_keys", action: "index", method: :delete } %>
+    <%= link_to "Manage Spare Keys", { controller: "spare_keys", action: "index" } %>
+  </div>
+
+  <br>
+
+  <div class='homepage-link'>
+    <%= link_to "Student Search", { controller: "home_page", action: "student_search" } %>
   </div>
 <% end %>

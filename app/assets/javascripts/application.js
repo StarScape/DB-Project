@@ -34,5 +34,4 @@ $(document).ready(() => {
       nav.css('display', 'none');
     }
   })
-
 });

@@ -25,5 +25,5 @@ email: team2mailer@gmail.com
 password foobarbizzbuzz111
 
 TODO:
-* Fix database room population
+* Add student search to homepage
 * Be done

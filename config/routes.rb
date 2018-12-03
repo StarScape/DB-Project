@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home_page#index'
 
+  get    'student_search', to: 'home_page#student_search'
+
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   get    '/logout',  to: 'sessions#destroy'
