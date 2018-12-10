@@ -25,5 +25,5 @@ email: team2mailer@gmail.com
 password foobarbizzbuzz111
 
 TODO:
-* Add student search to homepage
+* Add email date to package on send
 * Be done
