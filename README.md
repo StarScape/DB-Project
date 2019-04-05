@@ -21,8 +21,7 @@ email: fryja@appstate.edu
 password: foobar
 
 Email for mailer:
-email: team2mailer@gmail.com
-password foobarbizzbuzz111
+[REDACTED]
 
 TODO:
 * Add email date to package on send
